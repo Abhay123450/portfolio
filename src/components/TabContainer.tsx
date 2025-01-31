@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TabProps } from "./Tab";
+import { themeContext } from "../contexts/ThemeContext";
 
 export interface TabContainerProps {
     children: React.ReactElement<TabProps> | React.ReactElement<TabProps>[];
@@ -13,6 +14,8 @@ export function TabContainer({ children }: TabContainerProps): JSX.Element {
 
     // Define state for the active tab
     const [activeTab, setActiveTab] = useState<string | null>(null);
+
+    const theme = useContext(themeContext);
 
     // If there are valid children, set the first tab as the default active tab
     useEffect(() => {
@@ -38,23 +41,26 @@ export function TabContainer({ children }: TabContainerProps): JSX.Element {
                 {children.map(
                     (child, index) =>
                         React.isValidElement(child) && (
-                            <div
+                            <button
                                 key={index}
-                                role="button"
-                                className="w-fit mb-2 bg-white px-2 py-1 rounded-md mt-2 shadow-md border"
+                                className={`w-fit mb-2 px-2 py-1 rounded-md mt-2 shadow-md border ${
+                                    theme === "light"
+                                        ? "bg-white text-black"
+                                        : "bg-neutral-800 text-neutral-300 border-neutral-600"
+                                }`}
                                 onClick={() => setActiveTab(child.props.label)}
                             >
-                                <h3 className="text-lg font-bold text-neutral-800 ">
+                                <h3 className="text-lg font-bold ">
                                     {child.props.label}
                                 </h3>
                                 <div
                                     className={`h-2 w-full rounded ${
                                         child.props.label === activeTab
                                             ? "bg-primary"
-                                            : "bg-neutral-300"
+                                            : "bg-neutral-400"
                                     }`}
                                 ></div>
-                            </div>
+                            </button>
                             // <button
                             //     key={child.props.label}
                             //     className={`${

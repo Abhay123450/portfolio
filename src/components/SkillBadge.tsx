@@ -14,6 +14,8 @@ import {
 } from "react-icons/si";
 import { Skills } from "./Skills";
 import "../App.css";
+import { useContext } from "react";
+import { themeContext } from "../contexts/ThemeContext";
 
 const highlightedSkills: Skills[] = [
     "JavaScript",
@@ -41,6 +43,8 @@ export function SkillBadge({
     setSkillsSelected?: React.Dispatch<React.SetStateAction<Skills[]>>;
     viewType?: "text" | "icon" | "both" | "auto";
 }) {
+    const theme = useContext(themeContext);
+
     function filterChanged() {
         console.log("filterChanged event dispatched");
         const newEvent = new CustomEvent("filterChanged");
@@ -50,13 +54,14 @@ export function SkillBadge({
     if (viewType === "auto") {
         return (
             <div
-                role="button"
                 className={
                     ` w-fit flex flex-row items-center px-2 py-1 rounded-md border space-x-1` +
                     ` ${
                         isSelected
                             ? "border-primary bg-primary bg-opacity-20"
-                            : "bg-white "
+                            : theme === "light"
+                            ? "bg-white "
+                            : "bg-neutral-900 text-neutral-400 border-neutral-400"
                     }`
                 }
                 onClick={() => {
@@ -65,7 +70,7 @@ export function SkillBadge({
                 }}
             >
                 <div className="flex md:hidden lg:flex">{getIcon(name)}</div>
-                <p className={`text-md text-black hidden md:flex `}>{name}</p>
+                <p className={`text-md hidden md:flex `}>{name}</p>
             </div>
         );
     }
@@ -73,6 +78,7 @@ export function SkillBadge({
     return (
         <div
             role={isInteractive ? "button" : undefined}
+            tabIndex={isInteractive ? 0 : -1}
             className={
                 `relative overflow-hidden w-fit flex flex-row items-center px-2 py-1 rounded-md border space-x-1 ${
                     isInteractive ? "hover:border-primary" : ""
@@ -80,7 +86,9 @@ export function SkillBadge({
                 ` ${
                     isSelected
                         ? "border-primary bg-primary bg-opacity-20"
-                        : "bg-white "
+                        : theme === "light"
+                        ? "bg-white "
+                        : "bg-neutral-900 text-neutral-400 border-neutral-400"
                 }` +
                 ``
             }
@@ -88,10 +96,16 @@ export function SkillBadge({
                 filterChanged();
                 selectSkillToggle(name);
             }}
+            onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                    filterChanged();
+                    selectSkillToggle(name);
+                }
+            }}
         >
             {(viewType === "both" || viewType === "icon") && getIcon(name)}
             {(viewType === "both" || viewType === "text") && (
-                <p className={`text-md text-black `}>{name}</p>
+                <p className={`text-md `}>{name}</p>
             )}
             {highlightedSkills.includes(name) && viewType === "both" && (
                 <i className=" before:content-[''] before:w-[0.3rem] before:h-14 before:bg-neutral-400 before:blur-sm  before:shadow-md before:shadow-neutral-400 before:absolute before:-top-3 before:-left-6 before:transform before:rotate-[30deg] before:animate-shine "></i>

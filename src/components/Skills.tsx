@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { themeContext } from "../contexts/ThemeContext";
 import { SkillBadge } from "./SkillBadge";
 
 export const mySkills = [
@@ -29,6 +31,7 @@ export function Skills({
     viewType?: "text" | "icon" | "both" | "auto";
 }) {
     console.info(`skillselected array is: ${skillsSelected}`);
+    const theme = useContext(themeContext);
 
     if (skills) {
         // without title and other elements
@@ -54,7 +57,13 @@ export function Skills({
     return (
         <>
             <div className="w-fit my-2">
-                <h3 className="text-lg font-bold text-neutral-800 ">
+                <h3
+                    className={`text-lg font-bold ${
+                        theme === "light"
+                            ? "text-neutral-800"
+                            : "text-neutral-200"
+                    }`}
+                >
                     Tech Stack
                 </h3>
                 <div className="h-2 w-full bg-orange-500 rounded"></div>
