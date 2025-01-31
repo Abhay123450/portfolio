@@ -5,9 +5,6 @@ import { themeContext } from "../contexts/ThemeContext";
 export function Message(): JSX.Element {
     const theme = useContext(themeContext);
 
-    const heading = "A message for the recruiter";
-    const message = `I am a fullstack software developer with a strong focus on backend development, specializing in the JavaScript and Node.js ecosystem. I completed my Master of Technology in July 2024, and for the past two years, I have developed an in-depth understanding of both JavaScript and Node.js through hands-on experience. While I do not yet have formal professional experience, I have worked on a freelance project that allowed me to manage the full lifecycle of application development, from initial development to production deployment. I am now actively seeking a full-time software developer position to further my career.`;
-
     return (
         <section id="message-for-recruiter" className="mt-2">
             <Card>
@@ -19,7 +16,7 @@ export function Message(): JSX.Element {
                                 : "text-neutral-300"
                         }`}
                     >
-                        {heading}
+                        A message for the recruiter
                     </h4>
                     <div className="h-2 w-full bg-orange-500 rounded"></div>
                 </div>
@@ -30,7 +27,17 @@ export function Message(): JSX.Element {
                             : "text-neutral-400"
                     }`}
                 >
-                    {message}
+                    I am a fullstack software developer with a strong focus on
+                    backend development, specializing in the JavaScript and
+                    Node.js ecosystem. I completed my Master of Technology in
+                    July 2024, and for the past two years, I have developed an
+                    in-depth understanding of both JavaScript and Node.js
+                    through hands-on experience. While I do not yet have formal
+                    professional experience, I have worked on a freelance
+                    project that allowed me to manage the full lifecycle of
+                    application development, from initial development to
+                    production deployment. I am now actively seeking a full-time
+                    software developer position to further my career.
                 </p>
             </Card>
         </section>
