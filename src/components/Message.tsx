@@ -6,7 +6,7 @@ export function Message(): JSX.Element {
     const theme = useContext(themeContext);
 
     return (
-        <section id="message-for-recruiter" className="mt-2">
+        <section id="message-for-recruiter">
             <Card>
                 <div className="w-fit bg-transparent pb-2">
                     <h4
@@ -18,7 +18,7 @@ export function Message(): JSX.Element {
                     >
                         A message for the recruiter
                     </h4>
-                    <div className="h-2 w-full bg-orange-500 rounded"></div>
+                    <div className="h-2 w-auto bg-orange-500 rounded"></div>
                 </div>
                 <p
                     className={`text-base font-serif text-justify ${

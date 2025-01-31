@@ -2,8 +2,9 @@ import { SiGithub, SiYoutube, SiGoogleplay } from "react-icons/si";
 import { TbWorld } from "react-icons/tb";
 import { Skills } from "./Skills";
 import "./css/tooltip.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { themeContext } from "../contexts/ThemeContext";
+import Darjeeling from "../assets/images/Darjeeling.webp";
 
 export interface Link {
     name: string;
@@ -32,9 +33,11 @@ export function Project({
 
     const theme = useContext(themeContext);
 
+    let [showYt, setShowYt] = useState(false);
+
     return (
         <div
-            className={`w-full p-2 bg-opacity-80 hover:bg-opacity-100 rounded-md shadow-md border ${
+            className={`flex flex-col w-full p-2 bg-opacity-80 hover:bg-opacity-100 rounded-md shadow-md border ${
                 theme === "light"
                     ? "bg-white"
                     : "bg-neutral-800 border-neutral-600"
@@ -79,7 +82,7 @@ export function Project({
                     For {company}
                 </p>
             )}
-            {ytLink && (
+            {(ytLink && showYt && (
                 <iframe
                     width="100%"
                     height="315"
@@ -91,7 +94,35 @@ export function Project({
                     allowFullScreen
                     className="place-self-center max-w-xl py-2"
                 ></iframe>
-            )}
+            )) ||
+                (ytLink && (
+                    <button
+                        onClick={() => setShowYt(true)}
+                        className={`relative w-full h-[315px] max-w-xl place-self-center my-2 rounded ${
+                            theme === "light"
+                                ? "bg-neutral-400 "
+                                : "bg-neutral-600 "
+                        }`}
+                    >
+                        <img
+                            src={Darjeeling}
+                            alt="Darjeeling"
+                            className="w-full h-full object-cover rounded"
+                        />
+                        <div className="absolute flex w-full h-16 top-0 bg-gradient-to-b from-neutral-700 to-transparent">
+                            <div className="w-10 h-10 bg-primary text-white rounded-full my-auto mx-4 text-2xl font-[450px] flex items-center justify-center">
+                                A
+                            </div>
+                            <p className="text-xl text-white text-left font-[450px] my-auto">
+                                App Demo
+                            </p>
+                        </div>
+                        <SiYoutube className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-600" />
+                        <p className="absolute bottom-1 left-0 bg-neutral-900 bg-opacity-90 text-white text-base font-medium px-4 py-3 rounded-r-sm">
+                            Watch Video
+                        </p>
+                    </button>
+                ))}
             <ul className="list-disc pl-4 xl:pl-5 space-y-1">
                 {description.map((desc, i) => {
                     return (
