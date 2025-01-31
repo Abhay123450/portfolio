@@ -32,7 +32,8 @@ export function Projects({ skillsSelected }: { skillsSelected: Skills[] }) {
                 "Android Studio",
                 "Kotlin"
             ],
-            date: "Sep 2022 - Jun 2024"
+            date: "Sep 2022 - Jun 2024",
+            ytLink: "https://www.youtube.com/embed/cv423ikWolQ?si=Eq8dgT8myC_zrOti"
         },
         {
             workType: "Personal",
