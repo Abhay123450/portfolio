@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa6";
-import { FaQ } from "react-icons/fa6";
-import { Faq } from "./Faq";
 import { themeContext } from "../contexts/ThemeContext";
 
 export function Collapsible({

@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import Navlink from "./Navlink";
 import { themeContext } from "../contexts/ThemeContext";
-import { getThemeCss } from "../helpers/getThemeCss";
 
 function Navbar() {
     const navlinks = ["For Recruiters", "FAQs"] as const;

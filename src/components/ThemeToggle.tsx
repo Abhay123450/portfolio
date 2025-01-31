@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Theme } from "../contexts/ThemeContext";
 
 export function ThemeToggle({
