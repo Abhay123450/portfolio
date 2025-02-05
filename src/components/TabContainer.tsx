@@ -57,6 +57,8 @@ export function TabContainer({ children }: TabContainerProps): JSX.Element {
                                     className={`h-2 w-full rounded ${
                                         child.props.label === activeTab
                                             ? "bg-primary"
+                                            : theme === "light"
+                                            ? "bg-neutral-300"
                                             : "bg-neutral-400"
                                     }`}
                                 ></div>

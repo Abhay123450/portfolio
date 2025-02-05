@@ -12,6 +12,20 @@ export function ThemeToggle({
         const storedTheme = localStorage.getItem("theme");
         if (storedTheme) {
             setTheme(storedTheme as Theme);
+        } else {
+            if (
+                window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+            ) {
+                // dark mode
+                setTheme("dark");
+            }
+            window
+                .matchMedia("(prefers-color-scheme: dark)")
+                .addEventListener("change", (event) => {
+                    const theme = event.matches ? "dark" : "light";
+                    setTheme(theme);
+                });
         }
         console.log(`stored theme: ${storedTheme}`);
     }, []);

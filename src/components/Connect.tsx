@@ -2,11 +2,12 @@ import { SiGithub, SiLinkedin, SiTelegram } from "react-icons/si";
 import { MdEmail } from "react-icons/md";
 import "../App.css";
 import "./css/tooltip.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { themeContext } from "../contexts/ThemeContext";
 
 export function Connect() {
     const theme = useContext(themeContext);
+    let [copied, setCopied] = useState(false);
     return (
         <>
             <div className="w-fit mb-2">
@@ -29,7 +30,7 @@ export function Connect() {
                 >
                     <MdEmail className=" " />
                     <p
-                        className={`text-md ml-2 ${
+                        className={`text-base ml-2  ${
                             theme === "light"
                                 ? "text-neutral-800"
                                 : "text-neutral-300"
@@ -37,7 +38,17 @@ export function Connect() {
                     >
                         er.abhay.gkp@gmail.com
                     </p>
-                    <span className="tooltip">Click to Copy</span>
+                    <span className="tooltip tooltip ">
+                        Click to Copy Email
+                    </span>
+                    <span
+                        className={
+                            "absolute -bottom-8 -right-0 px-1 h-fit w-auto text-sm font-medium rounded-md border border-green-600 bg-green-200 text-black " +
+                            (copied ? "" : "hidden")
+                        }
+                    >
+                        Email Copied to Clipboard
+                    </span>
                 </button>
                 <a
                     className="tooltip-container flex flex-row w-9 h-9 items-center px-2 py-1 my-1 border border-neutral-400 rounded-md hover:border-black active:shadow-inner active:shadow-neutral-300"
@@ -50,7 +61,7 @@ export function Connect() {
                 </a>
                 <a
                     className="tooltip-container w-9 h-9 flex flex-row items-center px-2 py-1 my-1 border border-neutral-400 rounded-md hover:border-black active:shadow-inner active:shadow-neutral-300"
-                    href="https://github.com/Abhay123450"
+                    href="https://www.linkedin.com/in/sde-abhay/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -81,7 +92,12 @@ export function Connect() {
 
     async function copyEmailToClipboard(e: any) {
         e.preventDefault();
-        await navigator.clipboard.writeText("er.abhay.gkp@gmail.com");
-        alert("Email copied to clipboard");
+        try {
+            await navigator.clipboard.writeText("er.abhay.gkp@gmail.com");
+            setCopied(true);
+            setTimeout(() => setCopied(false), 4000);
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

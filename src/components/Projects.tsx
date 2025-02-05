@@ -21,7 +21,7 @@ export function Projects({ skillsSelected }: { skillsSelected: Skills[] }) {
                 },
                 {
                     name: "App Demo",
-                    link: "https://www.youtube.com/watch?v=4pWjGzq9nGc"
+                    link: "https://www.youtube.com/watch?v=cv423ikWolQ"
                 }
             ],
             techStack: [
@@ -30,10 +30,15 @@ export function Projects({ skillsSelected }: { skillsSelected: Skills[] }) {
                 "Express",
                 "MongoDB",
                 "Android Studio",
-                "Kotlin"
+                "Kotlin",
+                "GitHub"
             ],
             date: "Sep 2022 - Jun 2024",
-            ytLink: "https://www.youtube.com/embed/cv423ikWolQ?si=Eq8dgT8myC_zrOti"
+            ytVideo: {
+                title: "App Demo",
+                link: "https://www.youtube.com/embed/cv423ikWolQ?si=Eq8dgT8myC_zrOti?autoplay=1&mute=1",
+                duration: 78
+            }
         },
         {
             workType: "Personal",
@@ -64,7 +69,8 @@ export function Projects({ skillsSelected }: { skillsSelected: Skills[] }) {
                 "MongoDB",
                 "Svelte",
                 "HTML",
-                "Tailwind CSS"
+                "Tailwind CSS",
+                "GitHub"
             ],
             date: "May 2024 - Present"
         },
@@ -75,7 +81,7 @@ export function Projects({ skillsSelected }: { skillsSelected: Skills[] }) {
             description: [
                 `Developed this personal portfolio website which you are currently viewing.`
             ],
-            techStack: ["React", "Tailwind CSS", "TypeScript"],
+            techStack: ["React", "Tailwind CSS", "TypeScript", "GitHub"],
             links: [
                 {
                     name: "Source Code",

@@ -9,7 +9,7 @@ export function Education(): JSX.Element {
     const theme = useContext(themeContext);
 
     return (
-        <div className="space-y-2">
+        <div className="space-y-2 mb-2">
             <Card>
                 <div
                     className={`space-y-1 ${

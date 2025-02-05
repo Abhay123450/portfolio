@@ -19,7 +19,11 @@ export interface Project {
     techStack?: Skills[];
     links: Link[];
     date: string;
-    ytLink?: string;
+    ytVideo?: {
+        link: string;
+        title: string;
+        duration: number;
+    };
 }
 export function Project({
     project,
@@ -28,7 +32,7 @@ export function Project({
     project: Project;
     skillsSelected: Skills[];
 }) {
-    const { workType, company, name, description, techStack, links, ytLink } =
+    const { workType, company, name, description, techStack, links, ytVideo } =
         project;
 
     const theme = useContext(themeContext);
@@ -82,11 +86,12 @@ export function Project({
                     For {company}
                 </p>
             )}
-            {(ytLink && showYt && (
+            {(ytVideo && showYt && (
                 <iframe
+                    id="yt-player"
                     width="100%"
                     height="315"
-                    src={ytLink}
+                    src={ytVideo.link}
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -95,7 +100,7 @@ export function Project({
                     className="place-self-center max-w-xl py-2"
                 ></iframe>
             )) ||
-                (ytLink && (
+                (ytVideo && (
                     <button
                         onClick={() => setShowYt(true)}
                         className={`relative w-full h-[315px] max-w-xl place-self-center my-2 rounded ${
@@ -114,12 +119,12 @@ export function Project({
                                 A
                             </div>
                             <p className="text-xl text-white text-left font-[450px] my-auto">
-                                App Demo
+                                {ytVideo.title}
                             </p>
                         </div>
                         <SiYoutube className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-600" />
                         <p className="absolute bottom-1 left-0 bg-neutral-900 bg-opacity-90 text-white text-base font-medium px-4 py-3 rounded-r-sm">
-                            Watch Video
+                            Watch Video ({secondsToMinutes(ytVideo.duration)})
                         </p>
                     </button>
                 ))}
@@ -167,7 +172,7 @@ export function Project({
                             <p className="ml-1 w-full flex flex-row flex-nowrap ">
                                 {link.name}
                             </p>
-                            <p className="tooltip opacity-100 text-base">
+                            <p className={`tooltip opacity-100 text-base`}>
                                 {getTooltipText(link.name)}
                             </p>
                         </a>
@@ -211,5 +216,11 @@ export function Project({
         } else {
             return "Open link";
         }
+    }
+
+    function secondsToMinutes(seconds: number) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes} min ${remainingSeconds} sec`;
     }
 }
