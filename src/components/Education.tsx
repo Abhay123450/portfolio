@@ -62,6 +62,49 @@ export function Education(): JSX.Element {
                             </li>
                         </a>
                     </ul>
+                    <p className="text-base ms-6">
+                        <b>Abstract:</b> With the rapid development of Machine
+                        Learning (ML) and Artificial Intelligence (AI) and its
+                        diverse use cases, training these models has become very
+                        difficult and time-consuming, more so because of the
+                        huge amount of data required to increase the model's
+                        accuracy. With the recent development in the field of
+                        Quantum Computing, the hope is that it will solve ML
+                        problems efficiently. This paper gives a brief
+                        introduction to quantum computing and one of its use
+                        cases – Quantum Machine Learning (QML). It also covers
+                        some quantum machine learning algorithms like Quantum
+                        Support Vector Machine (QSVM), Quantum k-nearest
+                        Neighbour (Q-kNN), Quantum K Means Clustering and
+                        Quantum Neural Networks (QNN), which can be used to
+                        solve various types of problems more efficiently than
+                        classical ML algorithms. Further, it discusses some
+                        notable use cases of QML in the field of healthcare like
+                        image classification and disease detection. Finally, it
+                        talks about the challenges and future scope of QML.
+                    </p>
+                    <p className="text-base font-bold">Dissertation:</p>
+                    <ul className="list-disc list-inside">
+                        <li className="mb-1">
+                            <b>Title:</b> Parkinson’s Disease Detection Using
+                            Quantum Support Vector Classifier
+                        </li>
+                    </ul>
+                    <p className="text-base ms-6">
+                        <b>Abstract:</b> Quantum Machine Learning is a rapidly
+                        evolving field that uses quantum physics phenomena such
+                        as superposition and entanglement to solve machine
+                        learning problems. This study makes use of a quantum
+                        support vector classifier (QSVC) algorithm for the
+                        detection of Parkinson’s disease (PD) and compares it to
+                        the classical support vector classifier (SVC). The
+                        algorithms are applied to two different datasets for the
+                        classification of PD. On the first dataset, the
+                        classical SVC model has an accuracy of 92% while the
+                        QSVC model has an accuracy of 90%. On the second
+                        dataset, the SVC model has an accuracy of 90% while the
+                        QSVC model has an accuracy of 85%.
+                    </p>
                 </div>
             </Card>
 
